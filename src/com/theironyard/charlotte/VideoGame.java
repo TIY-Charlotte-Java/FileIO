@@ -88,13 +88,13 @@ public class VideoGame {
         cf.createFile();
     }
     /*
-    Answer Questions about the product.
-    Title
-    Developer
-    Release Date
-    Rating(ESRB) (valid ratings are: EC, E, E10+, T, M, AO, RP)
-    Rating(IGN) (Valid ratings are: 1 - 10)
-    save information to a file (See above to create file)
+    done - Answer Questions about the product.
+    done - Title
+    done - Developer
+    done - Release Date
+    done - Rating(ESRB) (valid ratings are: EC, E, E10+, T, M, AO, RP)
+    done - Rating(IGN) (Valid ratings are: 1 - 10)
+    done - save information to a file (See above to create file)
     make file created a json object file
     give user ability to update file and resave (I think this is where the FileWriter() comes in. FileWriter(f, true)
     keeps adding to the file without overwriting

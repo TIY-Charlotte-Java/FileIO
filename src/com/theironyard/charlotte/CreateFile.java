@@ -23,7 +23,16 @@ public class CreateFile extends VideoGame{
             File f = new File("ProductInfo.txt");
             fw = new FileWriter(f);
             bw = new BufferedWriter(fw);
-            bw.write(title + "\n" + developer + "\n" + releaseDate + "\n" + esrbRating + "\n" + ignRating);
+            //bw.write(title + "\n" + developer + "\n" + releaseDate + "\n" + esrbRating + "\n" + ignRating);
+            bw.write("Title: " + title);
+            bw.newLine();
+            bw.write("Developer: " + developer);
+            bw.newLine();
+            bw.write("Release Date: " + releaseDate);
+            bw.newLine();
+            bw.write("ESRB Rating: " + esrbRating);
+            bw.newLine();
+            bw.write("IGN Rating: " + ignRating);
 
             System.out.println("Data saved!");
         } catch(IOException e) {

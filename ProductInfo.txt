@@ -1,5 +1,5 @@
-Halo 2
-Bungie
-December 2016
-T
-9
+Title: Halo 2
+Developer: 343 Studios
+Release Date: December 2016
+ESRB Rating: T
+IGN Rating: 9
