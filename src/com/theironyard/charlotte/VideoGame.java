@@ -1,5 +1,7 @@
 package com.theironyard.charlotte;
 
+import jodd.json.JsonParser;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,11 +17,13 @@ public class VideoGame {
 
     static String title;
     static String developer;
-    static LocalDate releaseDate;
+    static String releaseDate;
     static String esrbRating;
     static String ignRating;
     private static Scanner scanner = new Scanner(System.in);
-    static CreateFile cf = new CreateFile(title, developer, releaseDate, esrbRating, ignRating);
+    //static CreateFile cf = new CreateFile(title, developer, releaseDate, esrbRating, ignRating);
+    static CreateJsonFile cf = new CreateJsonFile(title, developer, releaseDate,esrbRating, ignRating);
+    static CreateFile df = new CreateFile(title, developer, releaseDate,esrbRating, ignRating);
 
     public String getTitle() {
         return title;
@@ -37,11 +41,11 @@ public class VideoGame {
         this.developer = developer;
     }
 
-    public LocalDate getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -61,7 +65,11 @@ public class VideoGame {
         this.ignRating = ignRating;
     }
 
-    public VideoGame(String title, String developer, LocalDate releaseDate, String esrbRating, String ignRating) {
+    public VideoGame() {
+    }
+
+
+    public VideoGame(String title, String developer, String releaseDate, String esrbRating, String ignRating) {
         this.title = title;
         this.developer = developer;
         this.releaseDate = releaseDate;
@@ -70,6 +78,17 @@ public class VideoGame {
     }
 
     public static void main(String[] args) throws IOException{
+
+        File f = new File("videoGame.json");
+        Scanner s = new Scanner(f);
+        s.useDelimiter("\\Z");
+        String contents = s.next();
+        JsonParser parser = new JsonParser();
+        VideoGame cf2 = parser.parse(contents, VideoGame.class);
+
+        System.out.println(cf2);
+
+        System.out.printf("Title: %s \nDeveloper: %s \nRelease Date: %s \nESRB Rating: %s \nIGN Rating: %s\n", title, developer, releaseDate, esrbRating, ignRating);
 
         System.out.println("Let's add information about the video game");
 
@@ -80,10 +99,7 @@ public class VideoGame {
         developer = scanner.nextLine();
 
         System.out.println("Now add the release date in the format of January 2, 2016.");
-        String dateInput = scanner.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
-        LocalDate date = LocalDate.parse(dateInput, formatter);
-        releaseDate = date;
+        releaseDate = scanner.nextLine();
 
         System.out.println("Great! Now add the ESRB rating.");
         esrbRating = scanner.nextLine();
@@ -91,7 +107,8 @@ public class VideoGame {
         System.out.println("Finally, add the IGN rating so we know how cool the game is.");
         ignRating = scanner.nextLine();
 
-        cf.createFile();
+        cf.createJsonFile();
+        df.createFile();
     }
     /*
     done - Answer Questions about the product.
@@ -101,7 +118,7 @@ public class VideoGame {
     done - Rating(ESRB) (valid ratings are: EC, E, E10+, T, M, AO, RP)
     done - Rating(IGN) (Valid ratings are: 1 - 10)
     done - save information to a file (See above to create file)
-    make file created a json object file
+    done - make file created a json object file
     give user ability to update file and resave (I think this is where the FileWriter() comes in. FileWriter(f, true)
     keeps adding to the file without overwriting
     create error for json parsing fail instead of crashing the program

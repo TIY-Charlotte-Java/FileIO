@@ -11,10 +11,11 @@ import java.util.Scanner;
  * Created by Ben on 12/9/16.
  */
 public class CreateFile extends VideoGame{
-    public CreateFile(String title, String developer, LocalDate releaseDate, String esrbRating, String ignRating) {
+    public CreateFile(String title, String developer, String releaseDate, String esrbRating, String ignRating) {
         super(title, developer, releaseDate, esrbRating, ignRating);
 
     }
+
     FileWriter fw = null;
     BufferedWriter bw = null;
     private static Scanner scanner = new Scanner(System.in);
@@ -25,15 +26,11 @@ public class CreateFile extends VideoGame{
             fw = new FileWriter(f);
             bw = new BufferedWriter(fw);
             //bw.write(title + "\n" + developer + "\n" + releaseDate + "\n" + esrbRating + "\n" + ignRating);
-            bw.write("Title: " + title);
-            bw.newLine();
-            bw.write("Developer: " + developer);
-            bw.newLine();
-            bw.write("Release Date: " + releaseDate);
-            bw.newLine();
-            bw.write("ESRB Rating: " + esrbRating);
-            bw.newLine();
-            bw.write("IGN Rating: " + ignRating);
+//            bw.write("Title: " + title);
+//            bw.write("Developer: " + developer);
+//            bw.write("Release Date: " + releaseDate);
+//            bw.write("ESRB Rating: " + esrbRating);
+//            bw.write("IGN Rating: " + ignRating + "/10");
 
             System.out.println("Data saved!");
         } catch(IOException e) {
