@@ -79,6 +79,8 @@ public class VideoGame {
 
     public static void main(String[] args) throws IOException{
 
+        String selectChoice;
+
         File f = new File("videoGame.json");
         Scanner s = new Scanner(f);
         s.useDelimiter("\\Z");
@@ -90,25 +92,33 @@ public class VideoGame {
 
         System.out.printf("Title: %s \nDeveloper: %s \nRelease Date: %s \nESRB Rating: %s \nIGN Rating: %s\n", title, developer, releaseDate, esrbRating, ignRating);
 
-        System.out.println("Let's add information about the video game");
+        System.out.println("Do you wish to edit this infromation? select y/n");
+        selectChoice = scanner.nextLine();
 
-        System.out.println("To start, what is the title?");
-        title = scanner.nextLine();
+        if (selectChoice.equals("y")) {
+            System.out.println("Let's add information about the video game");
 
-        System.out.println("Next, add the name of the developer or studio");
-        developer = scanner.nextLine();
+            System.out.println("To start, what is the title?");
+            title = scanner.nextLine();
 
-        System.out.println("Now add the release date in the format of January 2, 2016.");
-        releaseDate = scanner.nextLine();
+            System.out.println("Next, add the name of the developer or studio");
+            developer = scanner.nextLine();
 
-        System.out.println("Great! Now add the ESRB rating.");
-        esrbRating = scanner.nextLine();
+            System.out.println("Now add the release date in the format of January 2, 2016.");
+            releaseDate = scanner.nextLine();
 
-        System.out.println("Finally, add the IGN rating so we know how cool the game is.");
-        ignRating = scanner.nextLine();
+            System.out.println("Great! Now add the ESRB rating.");
+            esrbRating = scanner.nextLine();
 
-        cf.createJsonFile();
-        df.createFile();
+            System.out.println("Finally, add the IGN rating so we know how cool the game is.");
+            ignRating = scanner.nextLine();
+
+            cf.createJsonFile();
+            df.createFile();
+        } else if (selectChoice.equals("n")) {
+            System.out.println("Good bye");
+            System.exit(0);
+        }
     }
     /*
     done - Answer Questions about the product.
