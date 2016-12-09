@@ -4,13 +4,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
  * Created by Ben on 12/9/16.
  */
 public class CreateFile extends VideoGame{
-    public CreateFile(String title, String developer, String releaseDate, String esrbRating, String ignRating) {
+    public CreateFile(String title, String developer, LocalDate releaseDate, String esrbRating, String ignRating) {
         super(title, developer, releaseDate, esrbRating, ignRating);
 
     }

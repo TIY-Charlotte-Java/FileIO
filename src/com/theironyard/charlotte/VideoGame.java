@@ -3,6 +3,9 @@ package com.theironyard.charlotte;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -12,7 +15,7 @@ public class VideoGame {
 
     static String title;
     static String developer;
-    static String releaseDate;
+    static LocalDate releaseDate;
     static String esrbRating;
     static String ignRating;
     private static Scanner scanner = new Scanner(System.in);
@@ -34,11 +37,11 @@ public class VideoGame {
         this.developer = developer;
     }
 
-    public String getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -58,7 +61,7 @@ public class VideoGame {
         this.ignRating = ignRating;
     }
 
-    public VideoGame(String title, String developer, String releaseDate, String esrbRating, String ignRating) {
+    public VideoGame(String title, String developer, LocalDate releaseDate, String esrbRating, String ignRating) {
         this.title = title;
         this.developer = developer;
         this.releaseDate = releaseDate;
@@ -76,8 +79,11 @@ public class VideoGame {
         System.out.println("Next, add the name of the developer or studio");
         developer = scanner.nextLine();
 
-        System.out.println("Now add the release date");
-        releaseDate = scanner.nextLine();
+        System.out.println("Now add the release date in the format of January 2, 2016.");
+        String dateInput = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
+        LocalDate date = LocalDate.parse(dateInput, formatter);
+        releaseDate = date;
 
         System.out.println("Great! Now add the ESRB rating.");
         esrbRating = scanner.nextLine();

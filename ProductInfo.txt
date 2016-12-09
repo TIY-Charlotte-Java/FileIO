@@ -1,5 +1,5 @@
-Title: Halo 2
-Developer: 343 Studios
-Release Date: December 2016
+Title: halo
+Developer: 343
+Release Date: 1994-10-26
 ESRB Rating: T
 IGN Rating: 9
