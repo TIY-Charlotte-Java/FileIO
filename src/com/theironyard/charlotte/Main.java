@@ -23,7 +23,11 @@ public class Main {
             newDog = parser.parse(contents, DogRescue.class);
             System.out.println("Welcome to Online Dog Rescue.\nBecause paying for a dog is dumb.\n");
             System.out.println("Welcome back " + newDog.getName() + ". Our records indicate you placed an" +
-                    "order for a dog.");
+                    " order for a dog with the following specifications:");
+            System.out.println("Age: " + newDog.getAge());
+            System.out.println("Size: " + newDog.getSize());
+            System.out.println("Gender: " + newDog.getGender());
+            System.out.println("Color: " + newDog.getColor());
             System.out.println("Do you want to change any of the information? Yes/no");
             String answer = Scanner.nextLine();
                 if (answer.equalsIgnoreCase("No")) {
@@ -39,7 +43,7 @@ public class Main {
         String name = Scanner.nextLine();
         newDog.setName(name);
 
-        System.out.println("Greetings " + name + " We have a wide variety of dogs, " +
+        System.out.println("Greetings " + name + ". We have a wide variety of dogs, " +
                 "let's start with getting an age range in years.");
         String age = Scanner.nextLine();
         newDog.setAge(age);
