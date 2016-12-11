@@ -1,30 +1,23 @@
 package com.theironyard.charlotte;
 
-import java.util.Scanner;
-
 public class DogRescue {
-    static String dog;
-    static String size;
-    static String gender;
-    static String color;
-    static String age;
+    String name;
+    String size;
+    String gender;
+    String color;
+    String age;
 
     //constructor
-    public DogRescue(String dog, String size, String gender, String color, String age) {
-        this.dog = dog;
-        this.size = size;
-        this.gender = gender;
-        this.color = color;
-        this.age = age;
+    public DogRescue() {
     }
 
     //getters and setters
-    public String getDog() {
-        return dog;
+    public String getName() {
+        return name;
     }
 
-    public void setDog(String animal) {
-        this.dog = animal;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSize() {
@@ -57,27 +50,5 @@ public class DogRescue {
 
     public void setAge(String age) {
         this.age = age;
-    }
-    public void customizeAnimal() {
-
-    }
-    private static Scanner Scanner = new Scanner(System.in);
-
-    public static void main(String[] args) throws Exception {
-        System.out.println("Welcome to Online Dog Rescue.\nBecause paying for a dog is dumb.");
-        System.out.println("What kind of dog would you like to rescue?");
-        dog = Scanner.nextLine();
-
-        System.out.println("Please specify the age range.");
-        age = Scanner.nextLine();
-
-        System.out.println("Is there a particular size you would like to rescue? If so plz specify.");
-        size = Scanner.nextLine();
-
-        System.out.println("Do you have a preference as to the gender?");
-        gender = Scanner.nextLine();
-
-        System.out.println("What color dog would you like?");
-        color = Scanner.nextLine();
     }
 }
