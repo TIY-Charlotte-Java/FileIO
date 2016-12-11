@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by emileenmarianayagam on 12/9/16.
  */
-public class MasterChef {
+public class MasterChef  {
 
 
     String personName;
@@ -15,7 +15,7 @@ public class MasterChef {
     String utensils;
 
 
-    String update;
+    //String update;
 
 
     public String getPersonName() {
@@ -23,8 +23,16 @@ public class MasterChef {
     }
 
     public void setPersonName(String personName) {
-        this.personName = personName;
-    }
+            this.personName = personName;
+        }
+
+
+    /*public void setPersonName(String personName) {
+        if (!personName.isEmpty()){
+            this.personName = personName;
+        }
+
+    }*/
 
     public String getName() {
         return name;
@@ -39,6 +47,7 @@ public class MasterChef {
     }
 
     public void setQuantity(int quantity) {
+        //if (quantity ==  )
         this.quantity = quantity;
     }
 
@@ -57,9 +66,12 @@ public class MasterChef {
     public void setUtensils(String utensils) {
         this.utensils = utensils;
     }
+    @Override
+    public String toString(){
+        return String.format("%s %s %d %s %s", getPersonName(), getName(), getQuantity(), getIngredients(), getUtensils());
+    }
 
-
-    public void bakery() {
+    public void bakery(){
 
             Scanner scanner = new Scanner(System.in);
             //method that takes in user entered information and stores it into a variable
@@ -71,8 +83,9 @@ public class MasterChef {
             System.out.println("what are we going to bake in the shop " + getPersonName());
             setName(scanner.nextLine());
 
-            System.out.println("How many " + getName() + "are we going to make");
+            System.out.println("How many " + getName() + " are we going to make");
             setQuantity(Integer.valueOf(scanner.nextLine()));
+
 
             System.out.println(" what are all the ingredients we need to make this " + getName() + " " + getPersonName());
             setIngredients(scanner.nextLine());
