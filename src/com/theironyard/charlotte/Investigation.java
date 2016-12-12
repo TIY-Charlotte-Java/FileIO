@@ -1,5 +1,7 @@
 package com.theironyard.charlotte;
 
+import javafx.beans.binding.When;
+
 import java.util.Scanner;
 
 /**
@@ -15,7 +17,7 @@ public class Investigation {
 
     @Override
     public String toString() {
-        return String.format("Yowza! %s %s %s %s %s %s\n", getWho(), getWhat(), getWhen(), getWhere(), getWhy(), getHow());
+        return String.format("Yowza!\n%s\n%s\n%s\n%s\n%s\n%s\n", getWho(), getWhat(), getWhen(), getWhere(), getWhy(), getHow());
     }
 
     public String getWho() {
@@ -23,6 +25,7 @@ public class Investigation {
     }
 
     public void setWho(String who) {
+
         if (!who.equals("")){
             this.who = who;
         }
@@ -55,13 +58,19 @@ public class Investigation {
     }
 
     public void setWhere(String where) {
-        this.where = where;
+
+        if (!where.equals("")){
+            this.where = where;
+        }
     }
 
     public String getWhy() {return why;}
 
     public void setWhy(String why) {
-        this.why = why;
+
+        if(!why.equals("")){
+            this.why = why;
+        }
     }
 
     public String getHow() {
@@ -69,11 +78,14 @@ public class Investigation {
     }
 
     public void setHow(String how) {
-        How = how;
+
+        if(!how.equals("")) {
+            How = how;
+        }
     }
 
     public void questionProcess(Scanner scanner) {
-        System.out.printf(" Hi Detective! Lets get this case figured out using the five Ws and H\n" +
+        System.out.printf("Hi Detective! Lets get this case figured out using the five Ws and H\n" +
                 "Who does this case concern?\n");
         setWho(scanner.nextLine());
         System.out.printf("Woah! What did %s do?\n",getWho());
@@ -86,7 +98,7 @@ public class Investigation {
         setWhy(scanner.nextLine());
         System.out.printf("How did %s %s %s %s %s\n", getWho(), getWhat(), getWhen(), getWhere(), getWhy());
         setHow(scanner.nextLine());
-        System.out.printf("Yowza! %s %s %s %s %s %s\n", getWho(), getWhat(), getWhen(), getWhere(), getWhy(), getHow());
+        System.out.printf("Yowza!\n%s\n%s\n%s\n%s\n%s\n%s\n", getWho(), getWhat(), getWhen(), getWhere(), getWhy(), getHow());
     }
 }
 
