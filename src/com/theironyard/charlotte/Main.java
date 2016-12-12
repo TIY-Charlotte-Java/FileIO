@@ -16,8 +16,8 @@ public class Main {
 
         Investigation inquiry = new Investigation();
 
-        //File f = new File("inquiry.json");
-        File f = new File("loser.notjson");
+        File f = new File("inquiry.json");
+        //File f = new File("loser.notjson");
 
         //read json
         Scanner s = new Scanner(f);
