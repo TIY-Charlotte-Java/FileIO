@@ -1,6 +1,5 @@
 package com.theironyard.charlotte;
 
-
 import jodd.json.JsonSerializer;
 
 import java.io.File;
@@ -62,4 +61,3 @@ public class Main {
     //ask questions
     //update the file
 }
-
