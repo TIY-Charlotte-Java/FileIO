@@ -10,33 +10,49 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class Main {
-    static Album a = new Album();
+    static Album userAlbum = new Album();
     public static JsonSerializer serializer = new JsonSerializer();
     public static JsonParser parser = new JsonParser();
 
-    public static void main(String[] args) throws IOException{
-        a.album();
+    public static void main(String[] args) throws IOException, ParseException {
+        System.out.println("Hello! Please answer a few questions about your favorite album.");
+        //ask questions
+        userAlbum.album();
         File album = new File("album.json");
         FileWriter fw = new FileWriter(album);
-
-        //writes to the JSON file
-        String albumInfo = serializer.serialize(Main.a);
+        //store answers as json object
+        String albumInfo = serializer.serialize(userAlbum);
         fw.write(albumInfo);
         fw.close();
 
         System.out.println("Would you like to change any of this information?");
         Scanner scanner = new Scanner(album);
-        String contents = scanner.next();
         scanner.useDelimiter("\\Z");
-        parser.parse(contents, Album.class);
+        String contents = scanner.next();
+        parseFile(contents);
         Scanner responseScanner = new Scanner(System.in);
-        String input  = scanner.nextLine();
+        String input  = responseScanner.nextLine();
         if (input.equals("yes")) {
-            fw.append(responseScanner.nextLine());
+            FileWriter overwriteFile = new FileWriter(album);
+            userAlbum.album();
+            String updateInfo = serializer.serialize(userAlbum);
+            if (updateInfo.contains("")) {
+                overwriteFile.write(updateInfo);
+                overwriteFile.close();
+                parseUpdatedFile(updateInfo);
+            }
         } else if (input.equals("no")) {
             System.exit(0);
         }
     }
 
+    public static void parseFile (String contents) throws ParseException{
+        parser.parse(contents, Album.class);
+        System.out.println(contents);
+    }
 
+    public static void parseUpdatedFile(String updateInfo) throws ParseException {
+        parser.parse(updateInfo,Album.class);
+        System.out.println(updateInfo);
+    }
 }
