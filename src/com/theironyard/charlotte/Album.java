@@ -76,10 +76,10 @@ public class Album {
 
     @Override
     public String toString() {
-        return  "Album name: " + getAlbumName() +  "\n "
-                + "Artist name: " + getArtistName() +  "\n "
-                + "Favorite song: " + getFavoriteSong() +  "\n "
-                + "What feels: " + getWhatFeels() +  "\n "
+        return "Album name: " + getAlbumName() + "\n "
+                + "Artist name: " + getArtistName() + "\n "
+                + "Favorite song: " + getFavoriteSong() + "\n "
+                + "What feels: " + getWhatFeels() + "\n "
                 + "Where heard: " + getWhereHeard();
     }
 }

@@ -25,34 +25,27 @@ public class Main {
         fw.write(albumInfo);
         fw.close();
 
-        System.out.println("Would you like to change any of this information?");
+        System.out.println("Would you like to change any of this information? Please enter 'yes' or 'no'");
+        //parse file and print what is stored
         Scanner scanner = new Scanner(album);
         scanner.useDelimiter("\\Z");
         String contents = scanner.next();
-        parseFile(contents);
+        parser.parse(contents, Album.class);
+        System.out.println(contents);
         Scanner responseScanner = new Scanner(System.in);
-        String input  = responseScanner.nextLine();
+        String input = responseScanner.nextLine();
         if (input.equals("yes")) {
             FileWriter overwriteFile = new FileWriter(album);
             userAlbum.album();
-            String updateInfo = serializer.serialize(userAlbum);
-            if (updateInfo.contains("")) {
-                overwriteFile.write(updateInfo);
-                overwriteFile.close();
-                parseUpdatedFile(updateInfo);
-            }
-        } else if (input.equals("no")) {
+            String updatedInfo = serializer.serialize(userAlbum);
+            //overwrite json obj that is saved with new answers
+            overwriteFile.write(updatedInfo);
+            overwriteFile.close();
+            parser.parse(updatedInfo, Album.class);
+            System.out.println(updatedInfo);
+        } else {
+            //if response is not "yes," exit program
             System.exit(0);
         }
-    }
-
-    public static void parseFile (String contents) throws ParseException{
-        parser.parse(contents, Album.class);
-        System.out.println(contents);
-    }
-
-    public static void parseUpdatedFile(String updateInfo) throws ParseException {
-        parser.parse(updateInfo,Album.class);
-        System.out.println(updateInfo);
     }
 }
